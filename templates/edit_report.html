@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PhishGuard - Edit Report</title>
+</head>
+
+<body>
+
+    <h1>PhishGuard</h1>
+
+    <h2>Edit Phishing Report</h2>
+
+    <form method="POST">
+
+        <label>URL:</label>
+        <br>
+        <input
+            type="text"
+            value="{{ report.url }}"
+            disabled
+        >
+
+        <br><br>
+
+        <label>Threat Type:</label>
+        <br>
+        <select name="threat_type" required>
+
+            <option value="Phishing"
+                {% if report.threat_type == "Phishing" %}selected{% endif %}>
+                Phishing
+            </option>
+
+            <option value="Safe"
+                {% if report.threat_type == "Safe" %}selected{% endif %}>
+                Safe
+            </option>
+
+            <option value="Suspicious"
+                {% if report.threat_type == "Suspicious" %}selected{% endif %}>
+                Suspicious
+            </option>
+
+            <option value="Malicious"
+                {% if report.threat_type == "Malicious" %}selected{% endif %}>
+                Malicious
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <label>Description:</label>
+        <br>
+
+        <textarea
+            name="description"
+            rows="5"
+            cols="40"
+        >{{ report.description }}</textarea>
+
+        <br><br>
+
+        <label>Status:</label>
+        <br>
+
+        <select name="status" required>
+
+            <option value="Pending"
+                {% if report.status == "Pending" %}selected{% endif %}>
+                Pending
+            </option>
+
+            <option value="Reviewed"
+                {% if report.status == "Reviewed" %}selected{% endif %}>
+                Reviewed
+            </option>
+
+            <option value="Resolved"
+                {% if report.status == "Resolved" %}selected{% endif %}>
+                Resolved
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">Update Report</button>
+
+    </form>
+
+    <br>
+
+    <a href="/reports">Back to All Reports</a>
+
+</body>
+</html>

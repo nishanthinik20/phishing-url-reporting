@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PhishGuard - All Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>PhishGuard</h1>
+
+    <h2>All Phishing Reports</h2>
+
+    {% if reports %}
+
+    <table border="1" cellpadding="8">
+
+        <tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>Threat Type</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Reported By</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for report in reports %}
+
+        <tr>
+            <td>{{ report.id }}</td>
+            <td>{{ report.url }}</td>
+            <td>{{ report.threat_type }}</td>
+            <td>{{ report.description }}</td>
+            <td>{{ report.status }}</td>
+            <td>{{ report.username }}</td>
+            <td>{{ report.created_at }}</td>
+
+            <td>
+                <a href="/edit/{{ report.id }}">Edit</a>
+
+                <form method="POST"
+                      action="/delete/{{ report.id }}"
+                      style="display:inline;">
+
+                    <button type="submit"
+                            onclick="return confirm('Delete this report?');">
+                        Delete
+                    </button>
+
+                </form>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p>No reports found.</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/report">Submit New Report</a>
+    <br><br>
+
+    <a href="/dashboard">Back to Dashboard</a>
+    <br><br>
+
+    <a href="/logout">Logout</a>
+
+</body>
+</html>

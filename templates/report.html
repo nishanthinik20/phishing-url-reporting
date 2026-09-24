@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PhishGuard - Submit Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>PhishGuard</h1>
+
+    <h2>Submit Phishing Report</h2>
+
+    <p>Report a suspicious or potentially malicious URL.</p>
+
+    <form method="POST">
+
+        <label>URL:</label>
+        <br>
+        <input
+            type="url"
+            name="url"
+            placeholder="https://example.com"
+            required
+        >
+
+        <br><br>
+
+        <label>Threat Type:</label>
+        <br>
+        <select name="threat_type" required>
+            <option value="">-- Select Threat Type --</option>
+            <option value="Phishing">Phishing</option>
+            <option value="Safe">Safe</option>
+            <option value="Suspicious">Suspicious</option>
+            <option value="Malicious">Malicious</option>
+        </select>
+
+        <br><br>
+
+        <label>Description:</label>
+        <br>
+        <textarea
+            name="description"
+            rows="5"
+            cols="40"
+            placeholder="Describe why this URL is suspicious..."
+        ></textarea>
+
+        <br><br>
+
+        <button type="submit">Submit Report</button>
+
+    </form>
+
+    <br>
+
+    <a href="/dashboard">Back to Dashboard</a>
+
+</body>
+</html>

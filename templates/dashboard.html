@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PhishGuard - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>PhishGuard</h1>
+
+    <h2>Security Dashboard</h2>
+
+    <p>Welcome, {{ session["username"] }}!</p>
+
+    <hr>
+
+    <h3>Report Statistics</h3>
+
+    <p>Total Reports: {{ total_reports }}</p>
+    <p>Phishing Reports: {{ phishing_count }}</p>
+    <p>Safe Reports: {{ safe_count }}</p>
+    <p>Pending Reports: {{ pending_count }}</p>
+
+    <hr>
+
+    <h3>Recent Reports</h3>
+
+    {% if reports %}
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>Threat Type</th>
+            <th>Status</th>
+            <th>Reported By</th>
+        </tr>
+
+        {% for report in reports %}
+        <tr>
+            <td>{{ report.id }}</td>
+            <td>{{ report.url }}</td>
+            <td>{{ report.threat_type }}</td>
+            <td>{{ report.status }}</td>
+            <td>{{ report.username }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p>No reports available yet.</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/report">Submit Phishing Report</a>
+    <br><br>
+    <a href="/reports">View All Reports</a>
+    <br><br>
+    <a href="/logout">Logout</a>
+
+</body>
+</html>
