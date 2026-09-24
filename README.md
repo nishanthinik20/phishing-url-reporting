@@ -35,4 +35,4 @@ A web-based Phishing URL Reporting System developed using Flask and MySQL.
 This project allows users to submit and manage suspicious URL reports through a simple cybersecurity reporting platform. 
 ## GitHub Repository
 
-[View Source Code on GitHub](https://github.com/yourusername/phishing-url-reporting)
+https://github.com/nishanthinik20/phishing-url-reporting
